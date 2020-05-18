@@ -8,10 +8,6 @@ namespace Lab11
         static void Main(string[] args)
         {
 
-            string input;
-            Console.WriteLine("Enter a category: ");
-            input = Console.ReadLine().ToLower();
-
             List<Movie> movieList = new List<Movie>
               {
                   new Movie("Soylent Green", "scifi"),
@@ -24,51 +20,41 @@ namespace Lab11
                   new Movie("The Omen", "horror"),
                   new Movie("Holloween", "horror"),
                   new Movie("The Exorcist", "horror")
-                  
+
               };
 
-            int index = movieList.FindIndex(item => item.Category == input);
-            if (index >= 0)
+
+            Console.WriteLine("Welcome to the Movie List!");
+            Console.WriteLine($"There are {movieList.Count} movies in this list.\n");
+            string input;
+            string searchAgain;
+
+            do
             {
-                movieList[index].GetMovieName();
-               
-            }
+                Console.WriteLine("Please enter a choice from one of the following categories - animated, drama, horror, scifi: ");
+                input = Console.ReadLine().ToLower();
 
-            //for(int i=0; i < movieList.Count; i++)
-            //{
-            //    movieList[i].GetMovieName();
-            //}
+                if ((input != "animated") && (input != "drama") && (input != "horror") && (input != "scifi"))
+                {
+                    Console.WriteLine("That is not a valid option.");
+                }
+                else
+                {
+                    foreach (var film in movieList)
+                        if (film.Category == input)
+                        {
+                            film.GetMovieName();
+                        }
+                };
 
-            //Console.WriteLine("Welcome to the Movie List!");
-            //string input;
+                Console.WriteLine("Would you like to search again? y/n");
+                searchAgain = Console.ReadLine().ToLower();
+            } while (searchAgain == "y");
 
-            //do
-            //{
-            //    Console.WriteLine("Please pick from the following categories: animated, scifi, drama, horror");
-            //    input = Console.ReadLine().ToLower();
-            //} while (input != validInput);
+            Console.WriteLine("Goodbye!");
+            
 
-
-
-
-
-
-
-
-            //foreach(var film in movieList)
-            //{
-            //    if( string ==)
-            //}
-
-
-
-
-            //string input;
-
-            //do
-            //{
-            //Console.WriteLine("");
-            //input = Console.ReadLine();
+            
         }
     }
 }
